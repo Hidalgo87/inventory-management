@@ -1,0 +1,15 @@
+<div class="create-inventory">
+  <div class="form-product">
+    <p>Ingresa el nombre del producto</p>
+    <input type="text" [(ngModel)]="name" />
+    <p>Ingresa la descripcion del producto</p>
+    <input type="text" [(ngModel)]="description" />
+    <p>Ingresa el precio</p>
+    <input type="number" [(ngModel)]="price" />
+    <p>Ingresa la cantidad</p>
+    <input type="number" [(ngModel)]="quantity" />
+    <p>Ingresa la imagen del producto</p>
+    <input type="file" [(ngModel)]="file" />
+    <button (click)="onClick()">Crear</button>
+  </div>
+</div>
