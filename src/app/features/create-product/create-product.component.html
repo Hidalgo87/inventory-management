@@ -1,0 +1,17 @@
+<div class="form-product">
+  <h2>Crear Producto</h2>
+  <br />
+  <label>Ingresa el nombre del producto</label>
+  <input type="text" [(ngModel)]="name" />
+  <label>Ingresa la descripcion del producto</label>
+  <input type="text" [(ngModel)]="description" />
+  <label>Ingresa el precio</label>
+  <input type="number" [(ngModel)]="price" />
+  <label>Ingresa la cantidad</label>
+  <input type="number" [(ngModel)]="quantity" />
+  <label>Ingresa la imagen del producto</label>
+  <input type="file" [(ngModel)]="file" />
+  <div class="send-button-container">
+    <p (click)="onClick()" class="send-button">Crear</p>
+  </div>
+</div>

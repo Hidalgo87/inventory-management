@@ -3,13 +3,13 @@ import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-create-inventory',
+  selector: 'app-create-product',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './create-inventory.component.html',
-  styleUrl: './create-inventory.component.css',
+  templateUrl: './create-product.component.html',
+  styleUrl: './create-product.component.css',
 })
-export class CreateInventoryComponent {
+export class CreateProductComponent {
   name: string = '';
   description: string = '';
   quantity: number = 0;
