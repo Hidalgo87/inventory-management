@@ -1,0 +1,19 @@
+
+    <div class="banner">
+        <img src='/assets/inventory_principal.jpg' alt="">
+    </div>
+
+    <div class="container_1">
+        <h1 class="mark">Inventory Management</h1>
+        <div class="login-box">
+            <h2>Iniciar sesión</h2>
+            <form [formGroup]="loginForm">
+                <p>Nombre de Usuario</p>
+                <input id="userName" type="text" formControlName="userName" class="input_text" placeholder="Nombre de Usuario"/>
+                <p>Contraseña</p>
+                <input id="password" type="password" formControlName="password" class="input_text" placeholder="Contraseña"/>
+            </form>
+            <a  (click)="onLogin()" class="primary">Ingresar</a>
+            <a  [routerLink]="['/sign-up']" class="secondary">Registrarse</a>
+        </div>
+</div>

@@ -1,5 +1,358 @@
-/* You can add global styles to this file, and also import other style files */
-* {
-  padding: 0;
-  margin: 0;
+
+body{
+    font-family: "Comme", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #ffffff;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+app-root{
+    display: flex;      
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+header{
+    background-color: #219edc;
+    color: white;
+    padding: 20px;   
+    text-align: center;
+} 
+label{
+    background-color: #000;
+    color: white;
+}
+
+
+main{                       
+    display: flex;
+    flex-direction: row;
+}
+.banner{
+  display: flex;
+  background-color: #053C5E;
+  width: 80%;
+  height: 85%;
+  position: relative;
+  right: 100px;
+  padding: 71px;
+}
+
+.banner img{
+  width: 100%;
+  align-items: center;
+  position: relative;
+  right: 90px;
+
+}
+
+.container_1{
+  margin-left: 60%;
+  position: relative;
+  left: 37%;
+  bottom: 620px;
+
+}
+
+.mark{
+  color: #000;
+  position: relative;
+  left: 55px;
+  bottom: 130px;
+}
+
+.login-box{
+  position: relative;
+    max-width: 400px;
+    background-color: #AB2836;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgb(0,0,0,0.8);
+    bottom: 120px;
+
+}
+.login-box h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-box input{
+    background-color: #fff;
+    border: 2px solid #219edc;
+    color: #023047;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Eventos */   
+.login-box input:focus{   
+    border-color: #fb8500;
+    outline: none;
+}
+
+.login-box a{
+    /*display: block; Convertir en bloque*/
+    padding: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box a:hover{
+    opacity: 0.7;
+}
+
+.primary {
+    background-color: #ffb703;
+}
+
+.secondary{
+    background-color: #fb8500;
+}
+
+
+
+footer{
+    background-color: #023047;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer ul{
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+}
+
+footer > ul > li{                
+    list-style: none;
+}
+
+footer > ul > li + li{    /* adyacente: tenga un anterior*/
+    margin-left: 10px;
+}
+
+.fab{
+    font-size: 30px;
+}
+
+#profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+
+}
+
+#profile img{
+    width: 100px;
+    border-radius: 50px;
+    align-items: center;
+    display: block;
+}
+
+#profile div{
+    text-align: center;
+
+}
+
+#profile div span{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    align-items: center;
+}
+
+#text-span{
+    font-size: large;
+    position: relative;
+    top: -30px;
+}
+
+
+#profile div span:first-child{
+    font-size: 1.8em;
+    font-weight: 900;
+
+}
+
+
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+nav ul li{
+    display: inline;
+    font-weight: bold;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    color: #023047;
+}
+
+ul li:first-child{
+    font-size: 2em;
+}
+
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+  
+#gallery .gallery-item{
+    display: flex;
+    flex-direction: column;
+}
+  
+.gallery-item img{
+    flex:1;
+    width: 350px;
+    height: 350px;
+    margin: 0 20px;
+    padding: 5px;
+    border: 1px solid #fff;
+}
+  
+.gallery-item img:hover{
+    border-color:#fb8500;
+    opacity: 0.7;
+}
+
+.comments{
+    display: flex;
+    width: 320px;
+    justify-content: space-between;
+}
+
+.comments input, .comments a{
+    margin:10px;
+    color:#fb8500;
+}
+  
+.comments a:hover{
+    color:#d00000;
+    cursor: pointer;
+}
+  
+.comments input{
+    flex: 1;
+    margin-left: 30px;
+    background-color: #ffffff;
+    border: 1px solid #219ebc;
+    color: #023047;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 12px;
+}
+  
+.comments input:focus {
+    border-color: #fb8500;
+    outline: none;
+}
+  
+.social-icons li + li{
+    margin-left: 50px;
+}
+
+.save-button{
+    background-color: #fb0000;
+    color: white;
+    border-radius: 5px;
+    padding: 20px;
+    cursor: pointer;
+    margin: 30px;
+    height: 15px;
+    width: 160px;
+    text-align: center;
+}
+
+
+@media (max-width: 590px){
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav ul li{
+        margin: 10px 0;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 490px){
+
+    #profile{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 299px){   /*Despues del media una condicion*/
+
+    nav ul li{
+        display: none;
+    }
+
+    nav ul li:first-child{
+        display: block;
+    }
+
+}
+
+@media only screen and (max-width: 900px)  and (orientation:landscape){
+    
+    main{
+        flex-direction: row;             /*cuando hay varios elementos me afectan todos, cuando es solo 1 no me afecta nada*/
+        align-items: flex-start;
+    }
+
+    #profile{
+        flex-direction: column;
+    }
+
+    #gallery{
+        padding: 10px;
+    }
+
+    #gallery img{
+        width: 280px;
+        margin: 10px;
+    }
+
+
 }
