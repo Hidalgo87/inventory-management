@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HeaderHomeComponent } from '../../layout/header/header-home/header-home.component';
+import { SidebarComponent } from '../../sidebar/sidebar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-view-inventory',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,
+    HeaderHomeComponent, 
+    SidebarComponent,
+    MatIconModule,
+    MatSidenavModule,
+    MatDividerModule],
   templateUrl: './view-inventory.component.html',
   styleUrl: './view-inventory.component.css',
 })
@@ -14,8 +24,8 @@ export class ViewInventoryComponent {
     Swal.fire({
       text: '¿Está seguro que desea eliminar el producto?',
       showCancelButton: true,
-      confirmButtonColor: '#dc3545', // Rojo
-      cancelButtonColor: '#007bff', // Azul
+      confirmButtonColor: '#dc3545', 
+      cancelButtonColor: '#007bff', 
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
     }).then((result) => {

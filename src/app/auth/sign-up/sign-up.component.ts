@@ -59,7 +59,7 @@ export class SignUpComponent {
         text: "¡Eres parte de los administradores!",
         icon: "success"
       });
-      this.router.navigateByUrl('/home')
+      
     }else{
       Swal.fire({
         text: response.message,

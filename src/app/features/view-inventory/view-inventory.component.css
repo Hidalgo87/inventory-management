@@ -1,12 +1,15 @@
 .product-gallery {
   text-align: center;
   padding: 20px;
+  width: 900px;
+  margin-left: 300px;
 }
 
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px; /* Espacio entre tarjetas */
+
 }
 
 .product-card {
