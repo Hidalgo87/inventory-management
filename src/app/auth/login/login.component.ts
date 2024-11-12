@@ -39,7 +39,7 @@ export class LoginComponent {
     let password = this.loginForm.value.password||'';
     let response = this.userService.login(userName, password);
     if(response.success){
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/view');
     }else{
       Swal.fire({
         title:'Ingreso',

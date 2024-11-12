@@ -54,6 +54,11 @@ export class SignUpComponent {
     const response = this.userService.register({userName:userName!, password: password!, email: email!});
 
     if(response.success){
+      Swal.fire({
+        title: "Registro Exitoso",
+        text: "¡Eres parte de los administradores!",
+        icon: "success"
+      });
       this.router.navigateByUrl('/home')
     }else{
       Swal.fire({
