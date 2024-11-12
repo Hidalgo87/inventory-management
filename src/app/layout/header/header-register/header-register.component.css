@@ -1,0 +1,10 @@
+.mark-register{
+    padding: 30px;
+    margin: 10px;
+    width: 40%;
+}
+
+.mark-register img{
+    width: 400px;
+    border-radius: 50px;
+}

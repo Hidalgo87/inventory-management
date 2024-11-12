@@ -26,20 +26,14 @@ label{
     color: white;
 }
 
-
-main{                       
-    display: flex;
-    flex-direction: row;
-}
-
 .banner{
   display: flex;
   background-color: #053C5E;
-  width: 80%;
-  height: 85%;
+  width: 58%;
+  height: 82%;
   position: relative;
   right: 100px;
-  padding: 71px;
+  padding: 85px;
 }
 
 .banner img{
@@ -53,8 +47,8 @@ main{
 .container_1{
   margin-left: 60%;
   position: relative;
-  left: 36%;
-  bottom: 625px;
+  left: 9.5%;
+  bottom: 635px;
   width: 500px;
   height: 0px;
 
