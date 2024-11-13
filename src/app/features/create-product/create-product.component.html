@@ -1,17 +1,27 @@
-<div class="form-product">
-  <h2>Crear Producto</h2>
-  <br />
-  <label>Ingresa el nombre del producto</label>
-  <input type="text" [(ngModel)]="name" />
-  <label>Ingresa la descripcion del producto</label>
-  <input type="text" [(ngModel)]="description" />
-  <label>Ingresa el precio</label>
-  <input type="number" [(ngModel)]="price" />
-  <label>Ingresa la cantidad</label>
-  <input type="number" [(ngModel)]="quantity" />
-  <label>Ingresa la imagen del producto</label>
-  <input type="file" [(ngModel)]="file" />
-  <div class="send-button-container">
-    <p (click)="onClick()" class="send-button">Crear</p>
+<app-header-home></app-header-home>
+<app-sidebar></app-sidebar>
+<div class="container-4">
+  <div class="form-product">
+    <h2>Crear Producto</h2>
+    <br />
+    <p>Ingresa el nombre del producto</p>
+    <input type="text" [(ngModel)]="name" placeholder="..."/>
+    <p>Ingresa la descripcion del producto</p>
+    <input type="text" [(ngModel)]="description" placeholder="..." />
+    <p>Ingresa el precio</p>
+    <input type="number" [(ngModel)]="price" />
+    <p>Ingresa la cantidad</p>
+    <input type="number" [(ngModel)]="quantity" />
+    <p>Ingresa la imagen del producto</p>
+    <input type="file" (change)="onFileChange($event)" />
+    <div>
+      <a (click)="onClick($event)" class="primary">Crear</a>
+    </div>
+  </div>
+
+  <div class="imageUploaded">
+    <h1>Imagen Seleccionada</h1>
+    <img [src]="uploadedUrl"/>
   </div>
 </div>
+

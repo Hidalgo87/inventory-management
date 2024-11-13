@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../services/user.service';
 import { HeaderRegisterComponent } from '../../layout/header/header-register/header-register.component';
 
 @Component({

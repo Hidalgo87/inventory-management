@@ -12,8 +12,8 @@
 
 .text_li{
     position: relative;
-    right: 230px;
-    width: 190px;
+    right: 270px;
+    width: 180px;
     padding: 25px;
     display: flex;
     flex-direction: row;
@@ -24,7 +24,7 @@
     font-family: "Comme", sans-serif;
     border-radius: 20px;
     text-align: center;
-    font-size: 21px;
+    font-size: 15px;
     color: #ffffff;
     text-decoration: none;
 }

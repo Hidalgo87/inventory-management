@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
-import { User } from '../auth/interfaces/user.interface';
-import { LoginResponse, SignUpResponse } from '../auth/interfaces/login_response.interface';
+import { User } from '../interfaces/user.interface';
+import { LoginResponse, SignUpResponse } from '../interfaces/login_response.interface';
+import { ProductItem } from '../../features/interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +65,27 @@ export class UserService {
     }
     return this.userSignal;
   }
+
+  saveImage(id: string, nombre: string, descripcion: string, precio: number, cantidad: number, url: string, userName: string) {
+    const newProduct: ProductItem = {
+      id,
+      nombre,
+      descripcion,
+      precio,
+      cantidad,
+      url
+    };
+  
+    let galleryStr = localStorage.getItem(`imgs-${userName}`);
+    if (galleryStr) {
+      let gallery = JSON.parse(galleryStr);
+      gallery = [...gallery, newProduct];
+      localStorage.setItem(`imgs-${userName}`, JSON.stringify(gallery));
+    } else {
+      localStorage.setItem(`imgs-${userName}`, JSON.stringify([newProduct]));
+    }
+  }
+  
 
 
 }
