@@ -1,21 +1,18 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" [(opened)]="isSidebarOpen" class="sidenav">
-      <div class="profile-section">
+  <mat-sidenav mode="side" [(opened)]="isSidebarOpen" class="sidenav">
+    <div class="profile-section">
+      <h3>Nombre de Usuario</h3>
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-button class="logout-button" (click)="logout()">Logout</button>
+  </mat-sidenav>
 
-        <img src="assets/profile.jpg" alt="Profile" class="profile-image" />
-        <h3>Nombre de Usuario</h3>
-      </div>
-      <mat-divider></mat-divider>
-      <button mat-button class="logout-button" (click)="logout()">Logout</button>
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-
-      <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <ng-content></ng-content>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <mat-sidenav-content>
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
   
   

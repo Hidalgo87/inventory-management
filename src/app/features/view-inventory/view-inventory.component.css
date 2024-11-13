@@ -3,7 +3,10 @@
   padding: 20px;
   width: 900px;
   margin-left: 300px;
+  position: relative;
+  bottom: 950px;
 }
+
 
 .product-container {
   display: grid;

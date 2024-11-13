@@ -3,11 +3,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [
+  imports: [RouterModule, RouterLink,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
@@ -17,6 +18,10 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
+
+  constructor(private router:Router){
+
+  }
   isSidebarOpen = true;
 
   toggleSidebar() {
@@ -24,7 +29,7 @@ export class SidebarComponent {
   }
 
   logout() {
-    console.log('Logout clicked');
+    this.router.navigateByUrl('/login');
   }
 }
 
