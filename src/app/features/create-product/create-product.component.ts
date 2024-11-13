@@ -67,6 +67,16 @@ export class CreateProductComponent {
 
       this.uploadedUrl = fileUrl;
       this.userService.saveImage(fileName, this.name, this.description, this.price, this.quantity, this.uploadedUrl, this.user().userName);
+
+      const productData = {
+        name: this.name,
+        description: this.description,
+        price: this.price,
+        quantity: this.quantity,
+        url: this.uploadedUrl
+      };
+  
+      localStorage.setItem('productData', JSON.stringify(productData));
       
       Swal.fire('Producto creado', 'El producto se ha creado correctamente', 'success');
     } catch (error: unknown) {

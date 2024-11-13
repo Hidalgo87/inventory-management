@@ -66,13 +66,13 @@ export class UserService {
     return this.userSignal;
   }
 
-  saveImage(id: string, nombre: string, descripcion: string, precio: number, cantidad: number, url: string, userName: string) {
+  saveImage(id: string, name: string, description: string, price: number, quantity: number, url: string, userName: string) {
     const newProduct: ProductItem = {
       id,
-      nombre,
-      descripcion,
-      precio,
-      cantidad,
+      name,
+      description,
+      price,
+      quantity,
       url
     };
   
@@ -84,6 +84,14 @@ export class UserService {
     } else {
       localStorage.setItem(`imgs-${userName}`, JSON.stringify([newProduct]));
     }
+  }
+
+  getProducts(userName:string):ProductItem[]{
+    let productStr = localStorage.getItem(`imgs-${userName}`);
+    if(productStr){
+      return JSON.parse(productStr);
+    }
+    return [];
   }
   
 

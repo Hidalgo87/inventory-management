@@ -11,83 +11,27 @@
 <div class="product-gallery">
   <h2>PRODUCTOS</h2>
   <div class="product-container">
-    <div class="product-card">
-      <img
-        src="https://lavaquita.co/cdn/shop/products/supermercados_la_vaquita_supervaquita_gaseosa_coca_cola_600_ml_bebidas_liquidas_700x700.jpg?v=1620489414"
-        alt="Nombre del producto 1"
-      />
-      <h3>Nombre del Producto 1</h3>
-      <p>Descripción del producto 1.</p>
-      <p class="price">$100.00</p>
-      <div class="action-buttons">
-        <button class="edit-button"><i class="fas fa-edit"></i> Editar</button>
-        <button class="delete-button" (click)="delete()">
-          <i class="fas fa-trash"></i> Eliminar
-        </button>
+      <div *ngFor="let product of products()" class="product-card">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Precio: ${{ product.price }}</p>
+        <p>Cantidad: {{ product.quantity }}</p>
+    
+        <img [src]="product.url" alt="{{ product.name }}" class="product-image" />
+    
+        <div class="action-buttons">
+          <button class="edit-button"><i class="fas fa-edit"></i> Editar</button>
+          <button class="delete-button"><i class="fas fa-trash"></i> Eliminar</button>
+        </div>
       </div>
-    </div>
-
-    <div class="product-card">
-      <img
-        src="https://misaboracolombia.com/cdn/shop/products/papalimonmargaritabolsa_2048x2048.jpg?v=1608182498"
-        alt="Nombre del producto 2"
-      />
-      <h3>Nombre del Producto 2</h3>
-      <p>Descripción del producto 2.</p>
-      <p class="price">$150.00</p>
-      <div class="action-buttons">
-        <button class="edit-button"><i class="fas fa-edit"></i> Editar</button>
-        <button class="delete-button" (click)="delete()">
-          <i class="fas fa-trash"></i> Eliminar
-        </button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img
-        src="https://lavaquita.co/cdn/shop/products/supermercados_la_vaquita_leche_deslactosada_six_pack_185x185.jpg?v=1635351706"
-        alt="Nombre del producto 3"
-      />
-      <h3>Nombre del Producto 3</h3>
-      <p>Descripción del producto 3.</p>
-      <p class="price">$200.00</p>
-      <div class="action-buttons">
-        <button class="edit-button"><i class="fas fa-edit"></i> Editar</button>
-        <button class="delete-button" (click)="delete()">
-          <i class="fas fa-trash"></i> Eliminar
-        </button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img
-        src="https://lavaquita.co/cdn/shop/products/supermercados_la_vaquita_leche_deslactosada_six_pack_185x185.jpg?v=1635351706"
-        alt="Nombre del producto 3"
-      />
-      <h3>Nombre del Producto 3</h3>
-      <p>Descripción del producto 3.</p>
-      <p class="price">$200.00</p>
-      <div class="action-buttons">
-        <button class="edit-button"><i class="fas fa-edit"></i> Editar</button>
-        <button class="delete-button" (click)="delete()">
-          <i class="fas fa-trash"></i> Eliminar
-        </button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img
-        src="https://lavaquita.co/cdn/shop/products/supermercados_la_vaquita_leche_deslactosada_six_pack_185x185.jpg?v=1635351706"
-        alt="Nombre del producto 3"
-      />
-      <h3>Nombre del Producto 3</h3>
-      <p>Descripción del producto 3.</p>
-      <p class="price">$200.00</p>
-      <div class="action-buttons">
-        <button class="edit-button"><i class="fas fa-edit"></i> Editar</button>
-        <button class="delete-button" (click)="delete()">
-          <i class="fas fa-trash"></i> Eliminar
-        </button>
-      </div>
-    </div>
+    
+    
+    <ng-template #noProducts>
+      <p>No hay productos disponibles.</p>
+    </ng-template>
+    
   </div>
+   
+    
 </div>
 </body>
