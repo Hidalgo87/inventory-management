@@ -1,8 +1,8 @@
 export interface ProductItem {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    quantity: number;
-    url: string;
+  id?: string;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  cantidad: number;
+  imagen: string;
 }

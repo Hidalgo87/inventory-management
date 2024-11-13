@@ -4,34 +4,37 @@
 />
 
 <body>
+  <app-header-home></app-header-home>
+  <app-sidebar></app-sidebar>
 
-<app-header-home></app-header-home>
-<app-sidebar></app-sidebar>
-
-<div class="product-gallery">
-  <h2>PRODUCTOS</h2>
-  <div class="product-container">
+  <div class="product-gallery">
+    <h2>PRODUCTOS</h2>
+    <div class="product-container">
       <div *ngFor="let product of products()" class="product-card">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.description }}</p>
-        <p>Precio: ${{ product.price }}</p>
-        <p>Cantidad: {{ product.quantity }}</p>
-    
-        <img [src]="product.url" alt="{{ product.name }}" class="product-image" />
-    
+        <h3>{{ product.nombre }}</h3>
+        <p>{{ product.descripcion }}</p>
+        <p>Precio: ${{ product.precio }}</p>
+        <p>Cantidad: {{ product.cantidad }}</p>
+
+        <img
+          [src]="product.imagen"
+          alt="{{ product.nombre }}"
+          class="product-image"
+        />
+
         <div class="action-buttons">
-          <button class="edit-button"><i class="fas fa-edit"></i> Editar</button>
-          <button class="delete-button"><i class="fas fa-trash"></i> Eliminar</button>
+          <button class="edit-button">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+          <button class="delete-button">
+            <i class="fas fa-trash"></i> Eliminar
+          </button>
         </div>
       </div>
-    
-    
-    <ng-template #noProducts>
-      <p>No hay productos disponibles.</p>
-    </ng-template>
-    
+
+      <ng-template #noProducts>
+        <p>No hay productos disponibles.</p>
+      </ng-template>
+    </div>
   </div>
-   
-    
-</div>
 </body>

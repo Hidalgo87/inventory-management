@@ -9,27 +9,38 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { ProductItem } from '../interfaces/product.interface';
 import { UserService } from '../../auth/services/user.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-view-inventory',
   standalone: true,
-  imports: [FormsModule, CommonModule,
-    HeaderHomeComponent, 
+  imports: [
+    FormsModule,
+    CommonModule,
+    HeaderHomeComponent,
     SidebarComponent,
     MatIconModule,
     MatSidenavModule,
-    MatDividerModule],
+    MatDividerModule,
+  ],
   templateUrl: './view-inventory.component.html',
   styleUrl: './view-inventory.component.css',
 })
-
 export class ViewInventoryComponent {
   user;
   products = signal<ProductItem[]>([]);
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private productService: ProductService
+  ) {
     this.user = this.userService.getUser();
     this.products.set(this.userService.getProducts(this.user().userName));
+    this.setProducts();
+  }
+
+  async setProducts() {
+    const products = await this.productService.getProducts();
+    this.products.set(products!);
   }
 }
-

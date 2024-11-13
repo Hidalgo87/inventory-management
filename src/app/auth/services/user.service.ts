@@ -1,81 +1,90 @@
 import { Injectable, signal } from '@angular/core';
 import { User } from '../interfaces/user.interface';
-import { LoginResponse, SignUpResponse } from '../interfaces/login_response.interface';
+import {
+  LoginResponse,
+  SignUpResponse,
+} from '../interfaces/login_response.interface';
 import { ProductItem } from '../../features/interfaces/product.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  userSignal = signal<User>({ userName: '', password: '', email: '' });
 
-  userSignal = signal<User>({userName:'', password:'', email:''});
-
-  login(userName: string, password: string) :LoginResponse{
+  login(userName: string, password: string): LoginResponse {
     const userSrt = localStorage.getItem(userName.toLowerCase().trim());
-    if(!userSrt){
+    if (!userSrt) {
       return {
         success: false,
-        message: 'Usuario o contraseña incorrectos'
-      }
+        message: 'Usuario o contraseña incorrectos',
+      };
     }
-    const user:User = JSON.parse(userSrt);
+    const user: User = JSON.parse(userSrt);
     if (user.password !== password) {
       return {
         success: false,
-        message: 'Usuario o contraseña incorrectos'
-      }
+        message: 'Usuario o contraseña incorrectos',
+      };
     }
     this.setUser(user);
     return {
-      success: true
-    }
-
+      success: true,
+    };
   }
 
-  logout(){
-    this.userSignal.set({userName:'',password:'',email:''});
+  logout() {
+    this.userSignal.set({ userName: '', password: '', email: '' });
     localStorage.removeItem('loggedUser');
   }
 
-  register(user:User): SignUpResponse{
+  register(user: User): SignUpResponse {
     if (localStorage.getItem(user.userName.toLowerCase().trim())) {
       return {
         success: false,
-        message: 'Usuario ya existe'
-      }
+        message: 'Usuario ya existe',
+      };
     }
     const userSrt = JSON.stringify(user);
     localStorage.setItem(user.userName.toLowerCase().trim(), userSrt);
     this.setUser(user);
     return {
-      success: true
-    }
+      success: true,
+    };
   }
 
-  private setUser(user:User){
+  private setUser(user: User) {
     localStorage.setItem('loggedUser', JSON.stringify(user));
     this.userSignal.set(user);
   }
 
-  getUser(){
+  getUser() {
     const userSrt = localStorage.getItem('loggedUser');
-    if(userSrt){
+    if (userSrt) {
       const user = JSON.parse(userSrt);
       this.userSignal.set(user);
     }
     return this.userSignal;
   }
 
-  saveImage(id: string, name: string, description: string, price: number, quantity: number, url: string, userName: string) {
-    const newProduct: ProductItem = {
+  saveImage(
+    id: string,
+    name: string,
+    description: string,
+    price: number,
+    quantity: number,
+    url: string,
+    userName: string
+  ) {
+    const newProduct = {
       id,
       name,
       description,
       price,
       quantity,
-      url
+      url,
     };
-  
+
     let galleryStr = localStorage.getItem(`imgs-${userName}`);
     if (galleryStr) {
       let gallery = JSON.parse(galleryStr);
@@ -86,14 +95,11 @@ export class UserService {
     }
   }
 
-  getProducts(userName:string):ProductItem[]{
+  getProducts(userName: string): ProductItem[] {
     let productStr = localStorage.getItem(`imgs-${userName}`);
-    if(productStr){
+    if (productStr) {
       return JSON.parse(productStr);
     }
     return [];
   }
-  
-
-
 }

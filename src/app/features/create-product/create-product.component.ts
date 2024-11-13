@@ -8,11 +8,18 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { HeaderHomeComponent } from '../../layout/header/header-home/header-home.component';
 import { ProductService } from '../services/product.service';
 import { UserService } from '../../auth/services/user.service';
+import { ProductItem } from '../interfaces/product.interface';
 
 @Component({
   selector: 'app-create-product',
   standalone: true,
-  imports: [FormsModule, CommonModule,RouterLink, SidebarComponent, HeaderHomeComponent],
+  imports: [
+    FormsModule,
+    CommonModule,
+    RouterLink,
+    SidebarComponent,
+    HeaderHomeComponent,
+  ],
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.css',
 })
@@ -26,28 +33,35 @@ export class CreateProductComponent {
 
   user;
 
-
-  constructor(private productService:ProductService, private userService:UserService){
+  constructor(
+    private productService: ProductService,
+    private userService: UserService
+  ) {
     this.user = userService.getUser();
-
   }
-  
+
   onFileChange(event: any) {
     this.file = event.target.files[0];
     if (this.file) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.uploadedUrl = reader.result as string; 
+        this.uploadedUrl = reader.result as string;
       };
-      reader.readAsDataURL(this.file);  
+      reader.readAsDataURL(this.file);
     }
   }
 
-
   async onClick(event: Event) {
     event.preventDefault();
-
-    if (!this.name || !this.description || !this.price || !this.quantity || !this.file) {
+    const response = await this.productService.getProducts();
+    console.log('response', response);
+    if (
+      !this.name ||
+      !this.description ||
+      !this.price ||
+      !this.quantity ||
+      !this.file
+    ) {
       Swal.fire('Error', 'Por favor completa todos los campos', 'error');
       return;
     }
@@ -57,30 +71,45 @@ export class CreateProductComponent {
       text: 'Por favor espera',
       allowOutsideClick: false,
       didOpen: () => {
-        Swal.showLoading(); 
-      }
+        Swal.showLoading();
+      },
     });
 
     const fileName = uuidv4();
     try {
-      const fileUrl = await this.productService.uploadFile(this.file, this.name, fileName, 'products');
+      const fileUrl = await this.productService.upload(
+        this.file,
+        this.name,
+        fileName
+      );
 
-      this.uploadedUrl = fileUrl;
-      this.userService.saveImage(fileName, this.name, this.description, this.price, this.quantity, this.uploadedUrl, this.user().userName);
+      this.uploadedUrl = fileUrl!;
+      this.userService.saveImage(
+        fileName,
+        this.name,
+        this.description,
+        this.price,
+        this.quantity,
+        this.uploadedUrl,
+        this.user().userName
+      );
 
-      const productData = {
-        name: this.name,
-        description: this.description,
-        price: this.price,
-        quantity: this.quantity,
-        url: this.uploadedUrl
+      const productData: ProductItem = {
+        nombre: this.name,
+        descripcion: this.description,
+        precio: this.price,
+        cantidad: this.quantity,
+        imagen: this.uploadedUrl,
       };
-  
-      localStorage.setItem('productData', JSON.stringify(productData));
-      
-      Swal.fire('Producto creado', 'El producto se ha creado correctamente', 'success');
+
+      const response = await this.productService.createProduct(productData);
+      console.log('response del create', response);
+      Swal.fire(
+        'Producto creado',
+        'El producto se ha creado correctamente',
+        'success'
+      );
     } catch (error: unknown) {
-      
       if (error instanceof Error) {
         Swal.fire('Error', error.message, 'error');
       } else {
@@ -88,9 +117,4 @@ export class CreateProductComponent {
       }
     }
   }
-
-  
-  
-
-
 }
