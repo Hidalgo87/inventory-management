@@ -1,37 +1,43 @@
 .sidenav-container {
+  margin: 10px;
   height: 100vh;
+  color: white;
+  font-family: "Comme", sans-serif;
 }
 
 .sidenav {
-  width: 250px;
-  background-color: #f4f4f4;
-  color: #ad3131;
+  width: 220px;
+  max-height: 500px;
+  background-color: #053C5E;
+  color: white;
+  border-radius: 50px;
+
 }
 
 .profile-section {
   text-align: center;
   padding: 20px 0;
-}
-
-.profile-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
 }
 
 .logout-button {
+  background-color: #fff;
   width: 100%;
   margin-top: 20px;
-  color: #d32f2f;
 }
+
 
 mat-sidenav-content {
   padding: 1px;
   width: 50px;
+  color: rgb(0, 0, 0);
 }
 
 mat-sidenav-container{
   width: 300px;
-  background-color: #0056b3;
+  background-color: hsla(0, 0%, 100%, 0);
+
 }
+

@@ -132,30 +132,6 @@ label{
 }
 
 
-
-footer{
-    background-color: #023047;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-footer ul{
-    display: flex;
-    justify-content: center;
-    padding-left: 0;
-}
-
-footer > ul > li{                
-    list-style: none;
-}
-
-footer > ul > li + li{    /* adyacente: tenga un anterior*/
-    margin-left: 10px;
-}
-
 .fab{
     font-size: 30px;
 }
@@ -200,11 +176,15 @@ footer > ul > li + li{    /* adyacente: tenga un anterior*/
 
 }
 
+li a:visited {
+    color: inherit; 
+  }
+  
 
 nav ul{
     list-style: none;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -212,22 +192,8 @@ nav ul{
 
 }
 
-nav ul li{
-    display: inline;
-    font-weight: bold;
-}
-
 nav ul li a{
-    color: white;
     text-decoration: none;
-}
-
-nav ul li a:hover{
-    color: #023047;
-}
-
-ul li:first-child{
-    font-size: 2em;
 }
 
 #gallery{
