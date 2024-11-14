@@ -1,1 +1,26 @@
-<p>edit-product works!</p>
+<app-header-home></app-header-home>
+<app-sidebar></app-sidebar>
+<div class="container-4">
+  <div class="form-product">
+    <h2>Editar Producto</h2>
+    <br />
+    <p>Edita el nombre del producto</p>
+    <input type="text" [(ngModel)]="product().nombre" placeholder="" />
+    <p>Edita la descripcion del producto</p>
+    <input type="text" [(ngModel)]="product().descripcion" placeholder="..." />
+    <p>Edita el precio</p>
+    <input type="number" [(ngModel)]="product().precio" />
+    <p>Edita la cantidad</p>
+    <input type="number" [(ngModel)]="product().cantidad" />
+    <p>Si desea cambiar la imagen, seleccinela</p>
+    <input type="file" (change)="onFileChange($event)" />
+    <div>
+      <a (click)="onClick($event)" class="primary">Editar</a>
+    </div>
+  </div>
+
+  <div class="imageUploaded">
+    <h1>Imagen Actual</h1>
+    <img [src]="product().imagen" />
+  </div>
+</div>

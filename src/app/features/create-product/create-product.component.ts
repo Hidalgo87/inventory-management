@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
@@ -35,7 +35,8 @@ export class CreateProductComponent {
 
   constructor(
     private productService: ProductService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.user = userService.getUser();
   }
@@ -109,6 +110,7 @@ export class CreateProductComponent {
         'El producto se ha creado correctamente',
         'success'
       );
+      this.router.navigateByUrl('/view');
     } catch (error: unknown) {
       if (error instanceof Error) {
         Swal.fire('Error', error.message, 'error');

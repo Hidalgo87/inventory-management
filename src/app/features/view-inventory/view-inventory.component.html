@@ -23,10 +23,10 @@
         />
 
         <div class="action-buttons">
-          <button class="edit-button">
+          <button class="edit-button" (click)="onEditProduct(+product.id!)">
             <i class="fas fa-edit"></i> Editar
           </button>
-          <button class="delete-button">
+          <button class="delete-button" (click)="onDeleteProduct(+product.id!)">
             <i class="fas fa-trash"></i> Eliminar
           </button>
         </div>

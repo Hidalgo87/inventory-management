@@ -38,4 +38,27 @@ export class ProductService {
   async createProduct(product: ProductItem) {
     await this.supabase.from('producto').insert(product);
   }
+
+  async deleteProduct(id: number) {
+    await this.supabase.from('producto').delete().eq('id', id);
+  }
+
+  async getProductById(id: number) {
+    return (await this.supabase.from('producto').select().eq('id', id))
+      .data![0];
+  }
+
+  async updateProduct(product: ProductItem) {
+    console.log('product.id', product.id);
+    const { data, error } = await this.supabase
+      .from('producto')
+      .update({
+        nombre: product.nombre,
+        descripcion: product.descripcion,
+        precio: product.precio,
+        cantidad: product.cantidad,
+        imagen: product.imagen,
+      })
+      .eq('id', product.id);
+  }
 }
