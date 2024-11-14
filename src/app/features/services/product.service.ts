@@ -52,20 +52,18 @@ export class ProductService {
     console.log('product.id', product.id);
     const { data, error } = await this.supabase
       .from('producto')
-      .update({
-        nombre: product.nombre,
-        descripcion: product.descripcion,
-        precio: product.precio,
-        cantidad: product.cantidad,
-        imagen: product.imagen,
-      })
+      .update(product)
       .eq('id', product.id);
   }
 
-  async searchBy(name?: string, maxPrice?: number) {
+  async searchBy(name?: string, category?: string, maxPrice?: number) {
     let query = this.supabase.from('producto').select();
     if (name) {
       query = query.ilike('nombre', `%${name}%`);
+    }
+
+    if (category) {
+      query = query.ilike('categoria', `%${category}%`);
     }
 
     if (maxPrice) {

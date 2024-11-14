@@ -32,6 +32,7 @@ export class ViewInventoryComponent {
   products = signal<ProductItem[]>([]);
 
   nameSearch = '';
+  categorySearch = '';
 
   priceSearch: number = 0;
 
@@ -77,13 +78,14 @@ export class ViewInventoryComponent {
   }
 
   async onSearchByName() {
-    if (!this.nameSearch && !this.priceSearch) {
+    if (!this.nameSearch && !this.priceSearch && !this.categorySearch) {
       this.setCurrentProducts();
       Swal.fire('Ingresa un valor para buscar', '', 'info');
       return;
     }
     const response = await this.productService.searchBy(
       this.nameSearch,
+      this.categorySearch,
       this.priceSearch
     );
 

@@ -30,6 +30,7 @@ export class CreateProductComponent {
   price: number = 0;
   file: File | undefined;
   uploadedUrl: string | null = null;
+  category: string = '';
 
   user;
 
@@ -99,6 +100,7 @@ export class CreateProductComponent {
         nombre: this.name,
         descripcion: this.description,
         precio: this.price,
+        categoria: this.category,
         cantidad: this.quantity,
         imagen: this.uploadedUrl,
       };

@@ -26,6 +26,7 @@ export class EditProductComponent implements OnInit {
   product = signal<ProductItem>({
     nombre: '',
     descripcion: '',
+    categoria: '',
     precio: 0,
     cantidad: 0,
     imagen: '',
@@ -106,6 +107,7 @@ export class EditProductComponent implements OnInit {
         id: this.id,
         nombre: this.product().nombre,
         descripcion: this.product().descripcion,
+        categoria: this.product().categoria,
         precio: this.product().precio,
         cantidad: this.product().cantidad,
         imagen: fileUrl,

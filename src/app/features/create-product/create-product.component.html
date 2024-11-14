@@ -5,7 +5,9 @@
     <h2>Crear Producto</h2>
     <br />
     <p>Ingresa el nombre del producto</p>
-    <input type="text" [(ngModel)]="name" placeholder="..."/>
+    <input type="text" [(ngModel)]="name" placeholder="..." />
+    <p>Ingresa la categoría del producto</p>
+    <input type="text" [(ngModel)]="category" placeholder="..." />
     <p>Ingresa la descripcion del producto</p>
     <input type="text" [(ngModel)]="description" placeholder="..." />
     <p>Ingresa el precio</p>
@@ -21,7 +23,6 @@
 
   <div class="imageUploaded">
     <h1>Imagen Seleccionada</h1>
-    <img [src]="uploadedUrl"/>
+    <img [src]="uploadedUrl" />
   </div>
 </div>
-
