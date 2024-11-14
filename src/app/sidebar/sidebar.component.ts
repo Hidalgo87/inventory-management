@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { Router, RouterLink, RouterModule } from '@angular/router';
+import { UserService } from '../auth/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,9 +20,13 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 })
 export class SidebarComponent {
 
-  constructor(private router:Router){
+  user;
+
+  constructor(private router:Router, private userService: UserService){
+    this.user = this.userService.getUser();
 
   }
+  
   isSidebarOpen = true;
 
   toggleSidebar() {
