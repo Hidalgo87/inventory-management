@@ -61,4 +61,25 @@ export class ProductService {
       })
       .eq('id', product.id);
   }
+
+  async searchBy(name?: string, maxPrice?: number) {
+    let query = this.supabase.from('producto').select();
+    if (name) {
+      query = query.ilike('nombre', `%${name}%`);
+    }
+
+    if (maxPrice) {
+      query = query.lte('precio', maxPrice);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error('Error en la búsqueda:', error);
+      return null;
+    }
+
+    console.log('data', data);
+    return data;
+  }
 }

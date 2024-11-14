@@ -9,26 +9,38 @@
 
   <div class="product-gallery">
     <h2>PRODUCTOS</h2>
-    <div class="product-container">
-      <div *ngFor="let product of products()" class="product-card">
-        <h3>{{ product.nombre }}</h3>
-        <p>{{ product.descripcion }}</p>
-        <p>Precio: ${{ product.precio }}</p>
-        <p>Cantidad: {{ product.cantidad }}</p>
+    <div class="content">
+      <input type="text" placeholder="Nombre" [(ngModel)]="nameSearch" />
+      <input
+        type="number"
+        placeholder="Precio máximo"
+        [(ngModel)]="priceSearch"
+      />
+      <button (click)="onSearchByName()">Buscar</button>
+      <div class="product-container">
+        <div *ngFor="let product of products()" class="product-card">
+          <h3>{{ product.nombre }}</h3>
+          <p>{{ product.descripcion }}</p>
+          <p>Precio: ${{ product.precio }}</p>
+          <p>Cantidad: {{ product.cantidad }}</p>
 
-        <img
-          [src]="product.imagen"
-          alt="{{ product.nombre }}"
-          class="product-image"
-        />
+          <img
+            [src]="product.imagen"
+            alt="{{ product.nombre }}"
+            class="product-image"
+          />
 
-        <div class="action-buttons">
-          <button class="edit-button" (click)="onEditProduct(+product.id!)">
-            <i class="fas fa-edit"></i> Editar
-          </button>
-          <button class="delete-button" (click)="onDeleteProduct(+product.id!)">
-            <i class="fas fa-trash"></i> Eliminar
-          </button>
+          <div class="action-buttons">
+            <button class="edit-button" (click)="onEditProduct(+product.id!)">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+            <button
+              class="delete-button"
+              (click)="onDeleteProduct(+product.id!)"
+            >
+              <i class="fas fa-trash"></i> Eliminar
+            </button>
+          </div>
         </div>
       </div>
 

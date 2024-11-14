@@ -31,6 +31,10 @@ export class ViewInventoryComponent {
   user;
   products = signal<ProductItem[]>([]);
 
+  nameSearch = '';
+
+  priceSearch: number = 0;
+
   constructor(
     private userService: UserService,
     private productService: ProductService,
@@ -70,5 +74,19 @@ export class ViewInventoryComponent {
         Swal.fire('Error al eliminar', '', 'error');
       }
     }
+  }
+
+  async onSearchByName() {
+    if (!this.nameSearch && !this.priceSearch) {
+      this.setCurrentProducts();
+      Swal.fire('Ingresa un valor para buscar', '', 'info');
+      return;
+    }
+    const response = await this.productService.searchBy(
+      this.nameSearch,
+      this.priceSearch
+    );
+
+    this.products.set(response!);
   }
 }
