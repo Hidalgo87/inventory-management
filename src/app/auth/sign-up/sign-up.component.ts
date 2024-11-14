@@ -10,31 +10,30 @@ import { HeaderRegisterComponent } from '../../layout/header/header-register/hea
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule, HeaderRegisterComponent],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
-
   signUpForm = this.fb.group({
     email: ['', [Validators.required]],
-    userName:['',[Validators.required]],
-    password:['', [Validators.required]],
-    confirmPassword: ['', [Validators.required]]
+    userName: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+    confirmPassword: ['', [Validators.required]],
   });
 
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
-  constructor(private fb: FormBuilder, private router: Router, private userService:UserService) {
-
-  }
-
-  onRegister() {
-    if(!this.signUpForm.valid){  
+  async onRegister() {
+    if (!this.signUpForm.valid) {
       Swal.fire({
-        title: "Error",
-        text: "Diligencia todos los campos",
-        icon: "warning"
+        title: 'Error',
+        text: 'Diligencia todos los campos',
+        icon: 'warning',
       });
       return;
-
     }
 
     const userName = this.signUpForm.value.userName;
@@ -42,38 +41,33 @@ export class SignUpComponent {
     const email = this.signUpForm.value.email;
     const confirmPassword = this.signUpForm.value.confirmPassword;
 
-    if(password !== confirmPassword){
+    if (password !== confirmPassword) {
       Swal.fire({
-        title: "Error",
-        text: "Las contraseñas no coinciden",
-        icon: "error"
+        title: 'Error',
+        text: 'Las contraseñas no coinciden',
+        icon: 'error',
       });
       return;
     }
 
-    const response = this.userService.register({userName:userName!, password: password!, email: email!});
+    const response = await this.userService.register({
+      userName: userName!,
+      password: password!,
+      email: email!,
+    });
 
-    if(response.success){
+    if (response.success) {
       Swal.fire({
-        title: "Registro Exitoso",
-        text: "¡Eres parte de los administradores!",
-        icon: "success"
+        title: 'Registro Exitoso',
+        text: '¡Eres parte de los administradores!',
+        icon: 'success',
       });
-      
-    }else{
+    } else {
       Swal.fire({
         text: response.message,
-        icon: "info"
+        icon: 'info',
       });
       return;
-      
     }
-
-
   }
-  
-  
-  
-
 }
-

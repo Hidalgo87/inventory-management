@@ -5,22 +5,35 @@ import {
   SignUpResponse,
 } from '../interfaces/login_response.interface';
 import { ProductItem } from '../../features/interfaces/product.interface';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   userSignal = signal<User>({ userName: '', password: '', email: '' });
+  private supabase: SupabaseClient;
 
-  login(userName: string, password: string): LoginResponse {
-    const userSrt = localStorage.getItem(userName.toLowerCase().trim());
-    if (!userSrt) {
+  constructor() {
+    this.supabase = createClient(
+      environment.supabaseConfig.url,
+      environment.supabaseConfig.secret
+    );
+  }
+
+  async login(userName: string, password: string): Promise<LoginResponse> {
+    const { data, error } = await this.supabase
+      .from('administrador')
+      .select()
+      .eq('userName', userName.toLowerCase().trim());
+    const user: User = data![0];
+    if (!user) {
       return {
         success: false,
         message: 'Usuario o contraseña incorrectos',
       };
     }
-    const user: User = JSON.parse(userSrt);
     if (user.password !== password) {
       return {
         success: false,
@@ -38,15 +51,24 @@ export class UserService {
     localStorage.removeItem('loggedUser');
   }
 
-  register(user: User): SignUpResponse {
-    if (localStorage.getItem(user.userName.toLowerCase().trim())) {
+  async register(user: User): Promise<SignUpResponse> {
+    const { data, error } = await this.supabase
+      .from('administrador')
+      .select()
+      .eq('userName', user.userName.toLowerCase().trim());
+    console.log('data', data);
+    if (data![0]) {
       return {
         success: false,
         message: 'Usuario ya existe',
       };
     }
-    const userSrt = JSON.stringify(user);
-    localStorage.setItem(user.userName.toLowerCase().trim(), userSrt);
+    console.log('user', user);
+    await this.supabase.from('administrador').insert({
+      userName: user.userName.toLowerCase().trim(),
+      email: user.email,
+      password: user.password,
+    });
     this.setUser(user);
     return {
       success: true,

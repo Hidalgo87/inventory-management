@@ -9,47 +9,41 @@ import { UserService } from '../services/user.service';
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
-
-
   loginForm = this.fb.group({
-    userName:['', [Validators.required]],
-    password:['', [Validators.required]]
+    userName: ['', [Validators.required]],
+    password: ['', [Validators.required]],
   });
 
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
-  constructor(private fb:FormBuilder, private router:Router, private userService: UserService){
-
-  }
-
-  onLogin(){
-
+  async onLogin() {
     console.log(this.loginForm);
     if (!this.loginForm.valid) {
       Swal.fire({
-        title:'Ingreso',
-        text:'Debe diligenciar todos los campos',
-        icon:'error'
+        title: 'Ingreso',
+        text: 'Debe diligenciar todos los campos',
+        icon: 'error',
       });
       return;
     }
-    let userName = this.loginForm.value.userName||'';
-    let password = this.loginForm.value.password||'';
-    let response = this.userService.login(userName, password);
-    if(response.success){
+    let userName = this.loginForm.value.userName || '';
+    let password = this.loginForm.value.password || '';
+    let response = await this.userService.login(userName, password);
+    if (response.success) {
       this.router.navigateByUrl('/view');
-    }else{
+    } else {
       Swal.fire({
-        title:'Ingreso',
-        text:response.message,
-        icon:'error'
+        title: 'Ingreso',
+        text: response.message,
+        icon: 'error',
       });
     }
-
   }
-
 }
-
-
