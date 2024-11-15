@@ -1,6 +1,6 @@
 .sidenav-container {
   margin: 10px;
-  height: 100vh;
+  height: 55vh;
   color: white;
   font-family: "Comme", sans-serif;
 }
@@ -35,9 +35,14 @@ mat-sidenav-content {
   color: rgb(0, 0, 0);
 }
 
+
 mat-sidenav-container{
   width: 300px;
   background-color: hsla(0, 0%, 100%, 0);
 
+}
+
+.mat-sidenav {
+  width: 200px;   
 }
 

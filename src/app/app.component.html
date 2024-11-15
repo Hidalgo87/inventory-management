@@ -1,5 +1,6 @@
-<div>
+<div [@routeAnimation]="getRouterOutletState(outlet)">
   <main>
-    <router-outlet />
+    <router-outlet #outlet="outlet"></router-outlet>
   </main>
 </div>
+

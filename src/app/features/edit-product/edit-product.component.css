@@ -1,16 +1,16 @@
 .container-4 {
-  height: 0px;
+  height: 550px;
 }
 
 .form-product {
   max-width: 600px;
-  background-color: #053c5e;
+  background-color: #053C5E;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.8);
-  bottom: 900px;
+  box-shadow: 10px 10px 20px rgb(0,0,0,0.8);
   position: relative;
   left: 300px;
+  bottom: 450px;
 }
 
 .form-product h2 {
@@ -68,11 +68,11 @@ input[type="number"]:focus {
 .imageUploaded {
   text-align: center;
   position: relative;
-  bottom: 1600px;
   left: 1100px;
   width: 600px;
   height: 560px;
-  border: 7px solid #053c5e;
+  border: 7px solid #053C5E;
+  bottom: 1200px;
 }
 
 .imageUploaded h1 {
