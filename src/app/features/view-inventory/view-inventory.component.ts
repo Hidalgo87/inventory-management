@@ -27,14 +27,13 @@ import { Router } from '@angular/router';
   templateUrl: './view-inventory.component.html',
   styleUrl: './view-inventory.component.css',
 })
-
 export class ViewInventoryComponent {
   user;
-  products = signal<ProductItem[]>([]);  
-  categories: string[] = [];  
-  nameSearch = ''; 
-  categorySearch = ''; 
-  priceSearch: number = 0; 
+  products = signal<ProductItem[]>([]);
+  categories: string[] = [];
+  nameSearch = '';
+  categorySearch = '';
+  priceSearch = '';
 
   constructor(
     private userService: UserService,
@@ -47,18 +46,18 @@ export class ViewInventoryComponent {
 
   async setCurrentProducts() {
     const products = await this.productService.getProducts();
-    
+
     if (products && products.length > 0) {
       this.products.set(products);
-      
-      this.categories = [...new Set(products.map(product => product.categoria))];
-      console.log('Categorias:', this.categories);  
+
+      this.categories = [
+        ...new Set(products.map((product) => product.categoria)),
+      ];
+      console.log('Categorias:', this.categories);
     } else {
       console.log('No se encontraron productos');
     }
   }
-  
-    
 
   onEditProduct(product_id: number) {
     this.router.navigateByUrl(`/edit/${product_id}`);
@@ -98,7 +97,7 @@ export class ViewInventoryComponent {
       const response = await this.productService.searchBy(
         this.nameSearch,
         this.categorySearch,
-        this.priceSearch
+        Number(this.priceSearch)
       );
 
       if (response && response.length > 0) {
@@ -110,12 +109,10 @@ export class ViewInventoryComponent {
       console.error('Error al buscar productos:', error);
       Swal.fire('Ocurrió un error al realizar la búsqueda', '', 'error');
     }
-  
   }
 
-
-onView(product: ProductItem) {
-  const productHTML = `
+  onView(product: ProductItem) {
+    const productHTML = `
     <h3>${product.nombre}</h3>
     <p>${product.descripcion}</p>
     <p><strong>Precio:</strong> $${product.precio}</p>
@@ -124,16 +121,10 @@ onView(product: ProductItem) {
     <img src="${product.imagen}" alt="${product.nombre}" class="product-image" style="width: 150px; height: 150px;"/>
   `;
 
-
-  Swal.fire({
-    title: 'Detalles del Producto',
-    html: productHTML,
-    icon: 'info',
-    confirmButtonText: 'Aceptar'
-  });
-}
-
-  
-  
-    
+    Swal.fire({
+      title: 'Detalles del Producto',
+      html: productHTML,
+      confirmButtonText: 'Aceptar',
+    });
+  }
 }

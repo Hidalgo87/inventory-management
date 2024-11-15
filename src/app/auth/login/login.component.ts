@@ -24,7 +24,6 @@ export class LoginComponent {
   ) {}
 
   async onLogin() {
-    console.log(this.loginForm);
     if (!this.loginForm.valid) {
       Swal.fire({
         title: 'Ingreso',

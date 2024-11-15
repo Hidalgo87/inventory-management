@@ -26,7 +26,6 @@ export class ProductService {
     const { data } = await this.supabase.storage
       .from('products')
       .getPublicUrl(`${folderName}/${fileName}`);
-    console.log('data.publicUrl', data.publicUrl);
     return `${data.publicUrl}?t=${new Date().getTime()}`;
   }
 
@@ -49,7 +48,6 @@ export class ProductService {
   }
 
   async updateProduct(product: ProductItem) {
-    console.log('product.id', product.id);
     const { data, error } = await this.supabase
       .from('producto')
       .update(product)
@@ -77,7 +75,6 @@ export class ProductService {
       return null;
     }
 
-    console.log('data', data);
     return data;
   }
 }

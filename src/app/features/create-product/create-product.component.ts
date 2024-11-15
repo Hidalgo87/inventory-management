@@ -56,7 +56,6 @@ export class CreateProductComponent {
   async onClick(event: Event) {
     event.preventDefault();
     const response = await this.productService.getProducts();
-    console.log('response', response);
     if (
       !this.name ||
       !this.description ||
@@ -106,7 +105,6 @@ export class CreateProductComponent {
       };
 
       const response = await this.productService.createProduct(productData);
-      console.log('response del create', response);
       Swal.fire(
         'Producto creado',
         'El producto se ha creado correctamente',

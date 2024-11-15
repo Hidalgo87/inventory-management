@@ -52,7 +52,6 @@ export class EditProductComponent implements OnInit {
 
   async setCurrentProduct() {
     const product = await this.productService.getProductById(this.id);
-    console.log('product', product);
     this.product.set(product!);
   }
 
@@ -62,6 +61,7 @@ export class EditProductComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = () => {
         this.uploadedUrl = reader.result as string;
+        this.product().imagen = this.uploadedUrl;
       };
       reader.readAsDataURL(this.file);
     }
@@ -114,7 +114,6 @@ export class EditProductComponent implements OnInit {
       };
 
       const response = await this.productService.updateProduct(productData);
-      console.log('response del update', response);
 
       Swal.fire(
         'Producto actualizado',

@@ -56,14 +56,12 @@ export class UserService {
       .from('administrador')
       .select()
       .eq('userName', user.userName.toLowerCase().trim());
-    console.log('data', data);
     if (data![0]) {
       return {
         success: false,
         message: 'Usuario ya existe',
       };
     }
-    console.log('user', user);
     await this.supabase.from('administrador').insert({
       userName: user.userName.toLowerCase().trim(),
       email: user.email,
