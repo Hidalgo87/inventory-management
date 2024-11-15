@@ -12,7 +12,7 @@
   gap: 50px;
   position: relative;
   bottom: 500px;
-  left: 340px;
+  left: 325px;
 }
 
 .product-card {
@@ -59,7 +59,7 @@
   color: #AB2836;
   width: 40px;
   padding: 10px;;
-  left: 350px;
+  left: 320px;
   border-radius: 20px;
   text-align: center;
   bottom: 500px;
@@ -71,8 +71,8 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 65%;
-  left: 350px;
+  width: 66%;
+  left: 325px;
   bottom: 530px;
   gap: 30px; 
   background-color: #a1a1a17e;
@@ -84,12 +84,15 @@
 }
 
 .content input {
-  font-size: 10px;
+  border: 1px solid #ccc;
   border-radius: 3rem;
   width: 300px;
   padding: 6px;
   font-size: 15px;
   font-family: "Comme", sans-serif;
+  border-color: #AB2836; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 
@@ -120,9 +123,10 @@
 
 .edit-button,
 .view-button,
+.button-search,
 .delete-button {
   padding: 5px 10px;
-  background-color: #007bff; 
+  background-color: #053c5e; 
   color: white; 
   border: none;
   border-radius: 4px;
@@ -130,25 +134,64 @@
   transition: background-color 0.3s;
 }
 
-.edit-button:hover,
-.view-button:hover,
-.delete-button:hover {
+.edit-button:hover{
   background-color: #0056b3; 
 }
 
-.delete-button {
-  background-color: #dc3545; 
+.delete-button{
+  background-color: #AB2836 
 }
 
 .delete-button:hover {
-  background-color: #c82333; 
+  background-color: #74101a; 
 }
 
 .view-button {
   background-color: #008807; 
 }
 
+.view-button:hover {
+  background-color: #00b309; 
+}
+
 .button-search{
   width: 200px;
   cursor: pointer;
+  border-radius: 30px;
+  padding: 8px;
+
+}
+
+.button-search:hover{
+  background-color: #74101a 
+}
+
+.button-search {
+  background-color: #c82333; 
+}
+
+
+select.form-control {
+  border-radius: 3rem;
+  width: 300px;
+  padding: 6px;
+  font-size: 15px;
+  font-family: "Comme", sans-serif;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select.form-control:focus {
+  border-color: #AB2836; 
+}
+
+option {
+  padding: 10px;
+  font-size: 16px;
+}
+
+select.form-control option:disabled {
+  color: #bbb;
 }

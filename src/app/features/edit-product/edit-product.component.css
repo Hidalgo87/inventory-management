@@ -78,10 +78,10 @@ input[type="number"]:focus {
 .imageUploaded h1 {
   color: rgb(0, 0, 0);
   text-align: center;
-  padding: 20px;
 }
 
 .imageUploaded img {
-  width: 550px;
-  height: 350px;
+  width: 75%;
+  height: auto;
+  border-radius: 4px;
 }

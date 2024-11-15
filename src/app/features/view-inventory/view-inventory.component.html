@@ -11,13 +11,19 @@
   <h3 class="title_search">Buscador</h3>
   <div class="content">
     <input type="text" placeholder="Nombre" [(ngModel)]="nameSearch" />
-    <input type="text" placeholder="Categoria" [(ngModel)]="categorySearch" />
+    <select [(ngModel)]="categorySearch" class="form-control" placeholder="Categoria">
+      <option value="" selected>Seleccionar categoría</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+    
     <input
       type="text"
       placeholder="Precio máximo"
       [(ngModel)]="priceSearch"
     />
-    <button class="button-search" (click)="onSearchByName()">Buscar</button>
+
+    <button class="button-search" (click)="onSearchByName()">
+      <i class="fa-solid fa-magnifying-glass"></i>Buscar</button>
   </div>
 
   <div class="product-gallery">
@@ -26,7 +32,6 @@
           <h3>{{ product.nombre }}</h3>
           <p>{{ product.descripcion }}</p>
           <p>Precio: ${{ product.precio }}</p>
-          <p>Cantidad: {{ product.cantidad }}</p>
 
           <img
             [src]="product.imagen"
@@ -45,11 +50,11 @@
               <i class="fas fa-trash"></i> Eliminar
             </button>
             <button
-              class="view-button"
-              (click)="onDeleteProduct(+product.id!)"
-            >
-              <i class="fa-solid fa-eye"></i> Ver
-            </button>
+            class="view-button"
+            (click)="onView(product)"
+          >
+          <i class="fa-solid fa-eye"></i> Ver
+          </button>
           </div>
       </div>
 
